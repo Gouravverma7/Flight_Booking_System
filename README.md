@@ -48,8 +48,9 @@ Client -> Frontend -> API Gateway -> Microservices -> MySQL -> Eureka Server for
 - Spring Cloud Netflix Eureka
 - Spring Security
 - Spring Data JPA
+- Validation
 - MySQL
-- JWT (jjwt)
+- JWT (jwt)
 - Docker
 
 ### Frontend
@@ -61,7 +62,7 @@ Client -> Frontend -> API Gateway -> Microservices -> MySQL -> Eureka Server for
 
 ### Integrations
 - Stripe
-- Duffel API
+- Duffel API (Real-Time Flights Data) 
 - JavaMail
 
 ## Repository Structure
