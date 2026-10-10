@@ -62,7 +62,6 @@ Client -> Frontend -> API Gateway -> Microservices -> MySQL
 
 ### Integrations
 - Stripe
-- Razorpay
 - Duffel API
 - JavaMail
 
