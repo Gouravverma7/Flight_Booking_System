@@ -8,7 +8,7 @@
 #  datasource: 
 #    url: jdbc:mysql://localhost:3306/flight_payment_db
 #    username: root
-#    password: admin
+#    password: root
 #
 #  jpa:
 #    hibernate:
@@ -53,7 +53,7 @@ spring:
     name: payment-service
 
   datasource:
-    url: ${PAYMENT_DB_URL:jdbc:mysql://localhost:3306/flight_payment_db}
+    url: ${PAYMENT_DB_URL:jdbc:mysql://localhost:3306/flight_payment_db?createDatabaseIfNotExist=true}
     username: ${DB_USERNAME:root}
     password: ${DB_PASSWORD}
 

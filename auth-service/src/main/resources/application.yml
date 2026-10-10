@@ -6,9 +6,9 @@ spring:
     name: auth-service
   
   datasource:
-    url: jdbc:mysql://localhost:3306/flight_auth_db?useSSL=false&serverTimezone=Asia/Kolkata&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/flight_auth_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Asia/Kolkata&allowPublicKeyRetrieval=true
     username: root
-    password: admin
+    password: root
 
   jpa:
     hibernate:

@@ -6,9 +6,9 @@ spring:
     name: booking-service
 
   datasource:
-    url: jdbc:mysql://localhost:3306/flight_booking_db
+    url: jdbc:mysql://localhost:3306/flight_booking_db?createDatabaseIfNotExist=true
     username: root
-    password: admin
+    password: root
 
   jpa:
     hibernate:
