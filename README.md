@@ -24,8 +24,7 @@ The system is composed of the following services:
 A high-level flow looks like this:
 
 ```text
-Client -> Frontend -> API Gateway -> Microservices -> MySQL
-                                -> Eureka Server for discovery
+Client -> Frontend -> API Gateway -> Microservices -> MySQL -> Eureka Server for discovery
 ```
 
 ## Features
