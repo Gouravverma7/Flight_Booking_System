@@ -1,0 +1,180 @@
+
+services:
+  # 1. Eureka Server
+  eureka-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.spring-service
+      args:
+        JAR_FILE: eureka-server/target/*.jar
+    container_name: flight-eureka
+    ports:
+      - "8761:8761"
+    networks:
+      - flight-network
+    restart: unless-stopped
+
+  # 2. API Gateway
+  api-gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile.spring-service
+      args:
+        JAR_FILE: api-gateway/target/*.jar
+    container_name: flight-gateway
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+    depends_on:
+      - eureka-server
+    networks:
+      - flight-network
+    restart: unless-stopped
+
+  # 3. Auth Service
+  auth-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.spring-service
+      args:
+        JAR_FILE: auth-service/target/*.jar
+    container_name: flight-auth
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+    depends_on:
+      - eureka-server
+    networks:
+      - flight-network
+    restart: unless-stopped
+
+  # 4. Flight Service
+  flight-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.spring-service
+      args:
+        JAR_FILE: flight-service/target/*.jar
+    container_name: flight-flight
+    ports:
+      - "8083:8083"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+    depends_on:
+      - eureka-server
+    networks:
+      - flight-network
+    restart: unless-stopped
+
+  # 5. Booking Service
+  booking-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.spring-service
+      args:
+        JAR_FILE: booking-service/target/*.jar
+    container_name: flight-booking
+    ports:
+      - "8084:8084"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+    depends_on:
+      - eureka-server
+    networks:
+      - flight-network
+    restart: unless-stopped
+
+  # 6. Payment Service
+  payment-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.spring-service
+      args:
+        JAR_FILE: payment-service/target/*.jar
+    container_name: flight-payment
+    ports:
+      - "8085:8085"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+    depends_on:
+      - eureka-server
+    networks:
+      - flight-network
+    restart: unless-stopped
+
+  # 7. Ticket Service
+  ticket-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.spring-service
+      args:
+        JAR_FILE: ticket-service/target/*.jar
+    container_name: flight-ticket
+    ports:
+      - "8086:8086"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+    depends_on:
+      - eureka-server
+    networks:
+      - flight-network
+    restart: unless-stopped
+
+  # 8. Notification Service
+  notification-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.spring-service
+      args:
+        JAR_FILE: notification-service/target/*.jar
+    container_name: flight-notification
+    ports:
+      - "8087:8087"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+    depends_on:
+      - eureka-server
+    networks:
+      - flight-network
+    restart: unless-stopped
+
+  # MySQL
+  mysql:
+    image: mysql:8.4
+    container_name: flight-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - flight-network
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD
+        - mysqladmin
+        - ping
+        - -h
+        - localhost
+        - -p${MYSQL_ROOT_PASSWORD}
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+networks:
+  flight-network:
+    driver: bridge
+
+volumes:
+  mysql_data:

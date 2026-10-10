@@ -1,0 +1,28 @@
+
+server:
+  port: 8083
+
+spring:
+  application:
+    name: flight-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+      register-with-eureka: true
+      fetch-registry: true
+
+duffel:
+  base-url: https://api.duffel.com
+  access-token: ${DUFFEL_ACCESS_TOKEN}
+
+currency:
+  base-url: https://api.frankfurter.dev
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info

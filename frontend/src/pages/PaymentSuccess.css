@@ -1,0 +1,135 @@
+.payment-success-page {
+  min-height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background: #f4f7fc;
+}
+
+.payment-success-card {
+  width: 100%;
+  max-width: 560px;
+  padding: 40px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #e0e7f1;
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.06);
+}
+
+.success-icon {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b7791f;
+  background: #fff7e6;
+  border-radius: 50%;
+}
+
+.success-icon.confirmed {
+  color: #15803d;
+  background: #dcfce7;
+}
+
+.payment-success-card h1 {
+  margin: 0 0 12px;
+  color: #0f172a;
+  font-size: 28px;
+}
+
+.success-message {
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.success-reference {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 28px 0;
+  padding: 18px;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+}
+
+.success-reference span {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.success-reference strong {
+  color: #1d4ed8;
+  font-size: 20px;
+  overflow-wrap: anywhere;
+}
+
+.success-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  text-align: left;
+  color: #475569;
+  background: #eff6ff;
+  border-radius: 12px;
+}
+
+.success-note svg {
+  flex-shrink: 0;
+  color: #2563eb;
+}
+
+.success-note p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.success-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.success-primary,
+.success-secondary {
+  min-height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.success-primary {
+  color: #fff;
+  background: #2563eb;
+}
+
+.success-primary:hover {
+  background: #1d4ed8;
+}
+
+.success-secondary {
+  color: #334155;
+  border: 1px solid #cbd5e1;
+}
+
+@media (max-width: 480px) {
+  .payment-success-card {
+    padding: 28px 20px;
+  }
+
+  .payment-success-card h1 {
+    font-size: 24px;
+  }
+}

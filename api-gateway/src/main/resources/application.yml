@@ -1,0 +1,142 @@
+#server:
+#  port: 8081
+#
+#spring:
+#  application:
+#    name: api-gateway
+#
+#  cloud:
+#    gateway:
+#      server:
+#        webflux:
+#          routes:
+#
+#          - id: auth-service
+#            uri: lb://AUTH-SERVICE
+##           uri: lb://auth-service
+#            predicates:
+#              - Path=/api/auth/**
+#
+#          - id: user-profile-service
+#            uri: lb://AUTH-SERVICE
+#            predicates:
+#              - Path=/api/users/**
+#
+#          - id: flight-service
+#            uri: lb://FLIGHT-SERVICE
+#            predicates:
+#              - Path=/api/flights/**
+#
+#          - id: booking-service
+#            uri: lb://BOOKING-SERVICE
+#            predicates:
+#              - Path=/api/bookings/**
+#
+#          - id: payment-service
+#            uri: lb://PAYMENT-SERVICE
+#            predicates:
+#              - Path=/api/payments/**
+#
+#          - id: ticket-service
+#            uri: lb://TICKET-SERVICE
+#            predicates:
+#              - Path=/api/tickets/**
+#
+#          - id: notification-service
+#            uri: lb://NOTIFICATION-SERVICE
+#            predicates:
+#              - Path=/api/notifications/**
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/
+#
+#    register-with-eureka: true
+#    fetch-registry: true
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: health, info
+##        include: health, info, gateway
+#
+
+
+server:
+  port: 8081
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          globalcors:
+            add-to-simple-url-handler-mapping: true
+            cors-configurations:
+              '[/**]':
+                allowedOrigins:
+                  - "http://localhost:5173"
+                allowedMethods:
+                  - GET
+                  - POST
+                  - PUT
+                  - PATCH
+                  - DELETE
+                  - OPTIONS
+                allowedHeaders:
+                  - Authorization
+                  - Content-Type
+                allowCredentials: true
+
+          routes:
+            - id: auth-service
+              uri: lb://AUTH-SERVICE
+              predicates:
+                - Path=/api/auth/**
+
+            - id: user-profile-service
+              uri: lb://AUTH-SERVICE
+              predicates:
+                - Path=/api/users/**
+
+            - id: flight-service
+              uri: lb://FLIGHT-SERVICE
+              predicates:
+                - Path=/api/flights/**
+
+            - id: booking-service
+              uri: lb://BOOKING-SERVICE
+              predicates:
+                - Path=/api/bookings/**
+
+            - id: payment-service
+              uri: lb://PAYMENT-SERVICE
+              predicates:
+                - Path=/api/payments/**
+
+            - id: ticket-service
+              uri: lb://TICKET-SERVICE
+              predicates:
+                - Path=/api/tickets/**
+
+            - id: notification-service
+              uri: lb://NOTIFICATION-SERVICE
+              predicates:
+                - Path=/api/notifications/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info

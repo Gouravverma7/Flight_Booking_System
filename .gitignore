@@ -1,0 +1,129 @@
+
+# ==============================
+# SECRETS & ENVIRONMENT VARIABLES
+# ==============================
+.env
+.env.*
+!.env.example
+!.env.sample
+*.env
+application-local.properties
+application-local.yml
+application-local.yaml
+application-secret.properties
+application-secret.yml
+application-secret.yaml
+secrets/
+credentials/
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# ==============================
+# JAVA / MAVEN / SPRING BOOT
+# ==============================
+target/
+build/
+out/
+*.class
+*.jar
+*.war
+*.ear
+hs_err_pid*
+replay_pid*
+
+# ==============================
+# IDEs: ECLIPSE / STS / INTELLIJ
+# ==============================
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+.metadata/
+.recommenders/
+
+# ==============================
+# VS CODE
+# ==============================
+.vscode/*
+!.vscode/extensions.json
+
+# ==============================
+# NODE / REACT / VITE
+# ==============================
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+.vite/
+coverage/
+.npm/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ==============================
+# LOGS & TEMPORARY FILES
+# ==============================
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*.orig
+
+# ==============================
+# DOCKER / LOCAL DATA
+# ==============================
+mysql_data/
+data/
+docker-data/
+*.pid
+
+# ==============================
+# GENERATED FILES / UPLOADS
+# ==============================
+uploads/
+downloads/
+generated/
+tickets/
+*.pdf
+
+# ==============================
+# OS FILES
+# ==============================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ==============================
+# TEST REPORTS
+# ==============================
+surefire-reports/
+failsafe-reports/
+playwright-report/
+test-results/
+
+# ==============================
+# PYTHON (IF USED IN PROJECT TOOLS)
+# ==============================
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# ==============================
+# LOCAL CONFIGURATION
+# ==============================
+application-override.yml
+application-override.yaml
+application-override.properties
